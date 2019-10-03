@@ -1,9 +1,11 @@
-package com.hua.gentlemanx2;
+package com.hua.gentlemanx2.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.hua.gentlemanx2.R;
+
+public class ProxyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
