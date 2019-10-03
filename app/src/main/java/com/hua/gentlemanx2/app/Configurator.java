@@ -39,9 +39,13 @@ public class Configurator {
         }
     }
 
-    final <T> T getConfiguration(Enum<ConfigType> key){
+    final <T> T getConfiguration(Object key){
         checkConfiguration();
-        return (T) GX_CONFIGS.get(key);
+       final Object value = GX_CONFIGS.get(key);
+       if (value == null){
+           throw new NullPointerException(key.toString() + " IS NULL");
+       }
+       return (T) GX_CONFIGS.get(key);
     }
 
 
