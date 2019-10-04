@@ -2,18 +2,19 @@ package com.hua.gentlemanx2.app;
 
 import java.util.HashMap;
 
+@SuppressWarnings("ALL")
 public class Configurator {
 
-    private static final HashMap<String,Object> GX_CONFIGS = new HashMap<>();
+    private static final HashMap<Object,Object> GX_CONFIGS = new HashMap<>();
     private Configurator(){
-        GX_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        GX_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
     }
 
     public static Configurator getInstance(){
         return Holder.INSTANCE;
     }
 
-    final HashMap<String,Object> getGxConfigs(){
+    final HashMap<Object, Object> getGxConfigs(){
         return GX_CONFIGS;
     }
 
@@ -23,17 +24,17 @@ public class Configurator {
     }
 
     public final void configure(){
-        GX_CONFIGS.put(ConfigType.CONFIG_READY.name(),true);//配置完成
+        GX_CONFIGS.put(ConfigKeys.CONFIG_READY,true);//配置完成
     }
 
     public final Configurator withApiHost(String host){
-        GX_CONFIGS.put(ConfigType.API_HOST.name(),host);
+        GX_CONFIGS.put(ConfigKeys.API_HOST,host);
         return this;
     }
 
     //检查是否配置完成
     private void checkConfiguration(){
-        final boolean isReady = (boolean) GX_CONFIGS.get(ConfigType.CONFIG_READY.name());
+        final boolean isReady = (boolean) GX_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady){
             throw new RuntimeException("Configuration is not Ready,call configure");
         }

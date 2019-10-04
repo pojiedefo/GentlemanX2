@@ -69,7 +69,6 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         }
         mUnbinder = ButterKnife.bind(this, rootView);
         onBindView(savedInstanceState, rootView);
-
         return rootView;
     }
 

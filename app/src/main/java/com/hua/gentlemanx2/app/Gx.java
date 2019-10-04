@@ -1,17 +1,16 @@
 package com.hua.gentlemanx2.app;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import java.util.HashMap;
 
 public final class Gx {
     public static Configurator init(Context context){
-        getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(),context.getApplicationContext());
+        getConfigurations().put(ConfigKeys.APPLICATION_CONTEXT.name(),context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    public static HashMap<String,Object> getConfigurations(){
+    public static HashMap<Object,Object> getConfigurations(){
         return Configurator.getInstance().getGxConfigs();
     }
 
@@ -24,6 +23,6 @@ public final class Gx {
     }
 
     public static Context getApplicationContext() {
-        return getConfiguration(ConfigType.APPLICATION_CONTEXT);
+        return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
 }
