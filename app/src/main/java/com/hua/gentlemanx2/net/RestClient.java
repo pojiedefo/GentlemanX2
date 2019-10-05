@@ -1,10 +1,15 @@
 package com.hua.gentlemanx2.net;
 
+import android.content.Context;
+import android.support.v4.app.NavUtils;
+
 import com.hua.gentlemanx2.net.callback.IError;
 import com.hua.gentlemanx2.net.callback.IFailure;
 import com.hua.gentlemanx2.net.callback.IRequest;
 import com.hua.gentlemanx2.net.callback.ISuccess;
 import com.hua.gentlemanx2.net.callback.RequestCallbacks;
+import com.hua.gentlemanx2.ui.GxLoader;
+import com.hua.gentlemanx2.ui.LoaderStyle;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -26,6 +31,8 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private final LoaderStyle LOADER_STYLE;
+    private final Context CONTEXT;
 
     public RestClient(String url,
                       Map<String, Object> pamams,
@@ -33,7 +40,9 @@ public class RestClient {
                       ISuccess success,
                       IFailure failure,
                       IError error,
-                      RequestBody body) {
+                      RequestBody body,
+                      Context context,
+                      LoaderStyle loaderStyle) {
         this.URL = url;
         PAMAMS.putAll(pamams);
         this.REQUEST = request;
@@ -41,6 +50,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.CONTEXT = context;
+        this.LOADER_STYLE = loaderStyle;
     }
 
     public static RestClientBuilder builder(){
@@ -53,6 +64,11 @@ public class RestClient {
         if (REQUEST != null){
             REQUEST.onRequestStart();
         }
+
+        if (LOADER_STYLE != null){
+            GxLoader.showLoading(CONTEXT,LOADER_STYLE);
+        }
+
         switch (method){
             case GET:
                 call = service.get(URL,PAMAMS);
@@ -75,10 +91,11 @@ public class RestClient {
 
     private Callback<String> getRequestCallback(){
         return new RequestCallbacks(
-             REQUEST,
-             SUCCESS,
-             FAILURE,
-                ERROR
+                 REQUEST,
+                 SUCCESS,
+                 FAILURE,
+                 ERROR,
+                 LOADER_STYLE
         );
     }
 

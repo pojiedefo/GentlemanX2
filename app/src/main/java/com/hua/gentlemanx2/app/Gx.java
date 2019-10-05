@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public final class Gx {
     public static Configurator init(Context context){
-        getConfigurations().put(ConfigKeys.APPLICATION_CONTEXT.name(),context.getApplicationContext());
+        getConfigurations().put(ConfigKeys.APPLICATION_CONTEXT,context.getApplicationContext());
         return Configurator.getInstance();
     }
 

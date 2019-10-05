@@ -24,6 +24,7 @@ public class ExampleDelegate extends GxDelegate {
     private void testRestClient() {
         RestClient.builder()
                 .url("http://www.baidu.com/")
+                .loader(getContext())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
