@@ -1,4 +1,4 @@
-package com.hua.gentlemanx2.main.index;
+package com.hua.gentlemanx2.main.user;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,10 +8,10 @@ import android.view.View;
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.bottom.BottomItemDelegate;
 
-public class IndexDelegate extends BottomItemDelegate {
+public class UserDelegate extends BottomItemDelegate{
     @Override
     public Object setLayout() {
-        return R.layout.delegate_index;
+        return R.layout.delegate_user;
     }
 
     @Override
