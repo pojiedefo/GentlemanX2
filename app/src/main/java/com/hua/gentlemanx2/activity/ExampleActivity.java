@@ -1,6 +1,5 @@
 package com.hua.gentlemanx2.activity;
 
-import com.hua.gentlemanx2.delegate.ExampleDelegate;
 import com.hua.gentlemanx2.delegate.GxDelegate;
 import com.hua.gentlemanx2.main.IntroduceBottomDelegate;
 

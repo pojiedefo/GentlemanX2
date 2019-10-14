@@ -12,7 +12,8 @@
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
+        android:background="@color/colorBottomBar"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal" />
 
