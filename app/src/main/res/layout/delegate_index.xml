@@ -3,6 +3,7 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
+    android:orientation="vertical"
 android:layout_height="match_parent">
 
 <android.support.v4.widget.SwipeRefreshLayout
@@ -13,32 +14,59 @@ android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_index"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>
 
 <android.support.v7.widget.Toolbar
+    android:id="@+id/tb_index"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="@android:color/transparent">
+    android:layout_height="70dp"
+    android:background="@android:color/holo_blue_bright">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_index_scan"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:text="{icon-scan}"
+        android:textColor="@android:color/white"
+        android:paddingRight="10dp"/>
 
-        <com.joanzapata.iconify.widget.IconTextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="left"
-            android:gravity="center"
-            android:layout_height="match_parent" />
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_search_view"
+        android:layout_weight="4"
+        android:layout_gravity="center"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:hint="搜索"
+        android:layout_width="0dp"
+        android:paddingLeft="20dp"
+        android:layout_height="40dp" />
 
-    </android.support.v7.widget.LinearLayoutCompat>
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_index_message"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:text="{fa-bullhorn}"
+        android:textColor="@android:color/white"
+        android:paddingLeft="10dp"/>
+
+</android.support.v7.widget.LinearLayoutCompat>
+
 
 </android.support.v7.widget.Toolbar>
-
 
 </android.support.design.widget.CoordinatorLayout>

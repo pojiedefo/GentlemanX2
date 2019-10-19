@@ -1,5 +1,7 @@
 package com.hua.gentlemanx2.app;
 
+import android.os.Handler;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -10,12 +12,13 @@ import java.util.HashMap;
 public class Configurator {
 
     private static final HashMap<Object,Object> GX_CONFIGS = new HashMap<>();
-
+    private static final Handler HANDLER = new Handler();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
 
     private Configurator(){
         GX_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
+        GX_CONFIGS.put(ConfigKeys.HANDLER,HANDLER);
     }
 
     public static Configurator getInstance(){
