@@ -30,8 +30,4 @@ public class IndexEntityBuilder {
         return new IndexEntity(FIELDS);
     }
 
-
-
-
-
 }

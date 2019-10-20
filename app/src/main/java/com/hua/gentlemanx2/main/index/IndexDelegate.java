@@ -3,8 +3,10 @@ package com.hua.gentlemanx2.main.index;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,15 +17,13 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.bottom.BottomItemDelegate;
-import com.hua.gentlemanx2.main.index.entity.IndexDataConvert;
-import com.hua.gentlemanx2.main.index.entity.IndexEntity;
-import com.hua.gentlemanx2.main.index.entity.IndexFields;
+import com.hua.gentlemanx2.main.IntroduceBottomDelegate;
+import com.hua.gentlemanx2.main.index.entity.IndexDataConverter;
 import com.hua.gentlemanx2.net.RestClient;
 import com.hua.gentlemanx2.net.callback.ISuccess;
+import com.hua.gentlemanx2.ui.decoration.BaseDecoration;
 import com.hua.gentlemanx2.ui.refresh.RefreshHandler;
 import com.joanzapata.iconify.widget.IconTextView;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.Unbinder;
@@ -47,22 +47,7 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        mRefreshHandler = new RefreshHandler(mRefreshLayout);
-        RestClient.builder()
-                .url("http://192.168.1.103:8080/Gx/index.json")
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        final IndexDataConvert convert = new IndexDataConvert();
-                        convert.setJsonData(response);
-                        JSONArray dataArray = JSON.parseObject(response).getJSONArray("data");
-                        JSONObject data = dataArray.getJSONObject(0);
-                        final String imageUrl = data.getString("imageUrl");
-                        Toast.makeText(getContext(),imageUrl,Toast.LENGTH_LONG).show();
-                    }
-                })
-                .build()
-                .get();
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
     }
 
     @Override
@@ -70,19 +55,30 @@ public class IndexDelegate extends BottomItemDelegate {
         return R.layout.delegate_index;
     }
 
-    private void initRefreshLayout(){
+    private void initRefreshLayout() {
         mRefreshLayout.setColorSchemeColors(
-            getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_blue_bright),
                 getResources().getColor(android.R.color.holo_orange_light),
                 getResources().getColor(android.R.color.holo_red_light)
-                );
-        mRefreshLayout.setProgressViewOffset(true,120,300);
+        );
+        mRefreshLayout.setProgressViewOffset(true, 120, 300);
+    }
+
+    private void initRecyclerView() {
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.addItemDecoration
+                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background0), 5));
+//        final IntroduceBottomDelegate introduceBottomDelegate = getParentDelegate();
+////        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(introduceBottomDelegate));
     }
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
+        initRecyclerView();
+        mRefreshHandler.firstPage("http://192.168.1.105:8080/Gx/index.json");
     }
 
     @Override

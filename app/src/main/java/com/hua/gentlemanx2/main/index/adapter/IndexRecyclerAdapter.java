@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IndexRecyclerAdapter extends
-        BaseMultiItemQuickAdapter<IndexEntity,IndexViewHolder>
-implements
+        BaseMultiItemQuickAdapter<IndexEntity, IndexViewHolder>
+        implements
         BaseQuickAdapter.SpanSizeLookup, OnItemClickListener {
 
     //确保初始化一次Banner，防止重复Item加载
@@ -41,21 +41,21 @@ implements
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .dontAnimate();
 
-    public static IndexRecyclerAdapter create(List<IndexEntity> data){
+    public static IndexRecyclerAdapter create(List<IndexEntity> data) {
         return new IndexRecyclerAdapter(data);
     }
 
-    public static IndexRecyclerAdapter create(DataConverter converter){
+    public static IndexRecyclerAdapter create(DataConverter converter) {
         return new IndexRecyclerAdapter(converter.convert());
     }
 
-    public void refresh(List<IndexEntity> data){
+    public void refresh(List<IndexEntity> data) {
         getData().clear();
         setNewData(data);
         notifyDataSetChanged();
     }
 
-    private void init(){
+    private void init() {
         //设置不同item布局
         addItemType(IndexItemType.TEXT, R.layout.item_index_text);
         addItemType(IndexItemType.IMAGE, R.layout.item_index_image);
@@ -68,7 +68,7 @@ implements
         isFirstOnly(false);
     }
 
-    protected IndexViewHolder createBaseViewHolder(View view){
+    protected IndexViewHolder createBaseViewHolder(View view) {
         return IndexViewHolder.create(view);
     }
 
@@ -78,10 +78,10 @@ implements
         final String imageUrl;
         final ArrayList<String> bannerImages;
 
-        switch (holder.getItemViewType()){
+        switch (holder.getItemViewType()) {
             case IndexItemType.TEXT:
                 text = entity.getField(IndexFields.TEXT);
-                holder.setText(R.id.text_single,text);
+                holder.setText(R.id.text_single, text);
                 break;
             case IndexItemType.IMAGE:
                 imageUrl = entity.getField(IndexFields.IMAGE_URL);
@@ -107,8 +107,8 @@ implements
                     mIsInitBanner = true;
                 }
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
 
     }

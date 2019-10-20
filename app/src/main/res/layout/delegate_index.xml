@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-android:layout_height="match_parent">
+    android:layout_height="match_parent">
 
 <android.support.v4.widget.SwipeRefreshLayout
     android:id="@+id/srl_index"
@@ -21,12 +21,14 @@ android:layout_height="match_parent">
 <android.support.v7.widget.Toolbar
     android:id="@+id/tb_index"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="65dp"
+    app:layout_behavior="com.hua.gentlemanx2.ui.statusbar.TranslucentBehavior"
     android:background="@android:color/holo_blue_bright">
 
 <android.support.v7.widget.LinearLayoutCompat
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="60dp"
+    android:paddingTop="12dp"
     android:orientation="horizontal">
 
     <com.joanzapata.iconify.widget.IconTextView
@@ -36,7 +38,7 @@ android:layout_height="match_parent">
         android:layout_weight="1"
         android:layout_gravity="left"
         android:gravity="center"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:text="{icon-scan}"
         android:textColor="@android:color/white"
         android:paddingRight="10dp"/>
@@ -50,7 +52,7 @@ android:layout_height="match_parent">
         android:hint="搜索"
         android:layout_width="0dp"
         android:paddingLeft="20dp"
-        android:layout_height="40dp" />
+        android:layout_height="35dp" />
 
     <com.joanzapata.iconify.widget.IconTextView
         android:id="@+id/icon_index_message"

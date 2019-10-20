@@ -9,7 +9,7 @@ public class IndexViewHolder extends BaseViewHolder {
         super(view);
     }
 
-    public static IndexViewHolder create(View view){
+    public static IndexViewHolder create(View view) {
         return new IndexViewHolder(view);
     }
 }

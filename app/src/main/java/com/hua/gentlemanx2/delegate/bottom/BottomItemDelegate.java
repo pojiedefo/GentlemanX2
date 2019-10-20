@@ -6,8 +6,9 @@ import android.widget.Toast;
 
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.BaseDelegate;
+import com.hua.gentlemanx2.delegate.GxDelegate;
 
-public abstract class BottomItemDelegate extends BaseDelegate implements View.OnKeyListener {
+public abstract class BottomItemDelegate extends GxDelegate implements View.OnKeyListener {
 
     private long mExitTime = 0;
     private static final int EXIT_TIME = 2000;
