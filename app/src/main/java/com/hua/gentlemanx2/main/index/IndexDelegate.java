@@ -8,11 +8,22 @@ import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.bottom.BottomItemDelegate;
+import com.hua.gentlemanx2.main.index.entity.IndexDataConvert;
+import com.hua.gentlemanx2.main.index.entity.IndexEntity;
+import com.hua.gentlemanx2.main.index.entity.IndexFields;
+import com.hua.gentlemanx2.net.RestClient;
+import com.hua.gentlemanx2.net.callback.ISuccess;
 import com.hua.gentlemanx2.ui.refresh.RefreshHandler;
 import com.joanzapata.iconify.widget.IconTextView;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.Unbinder;
@@ -37,6 +48,21 @@ public class IndexDelegate extends BottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mRefreshHandler = new RefreshHandler(mRefreshLayout);
+        RestClient.builder()
+                .url("http://192.168.1.103:8080/Gx/index.json")
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        final IndexDataConvert convert = new IndexDataConvert();
+                        convert.setJsonData(response);
+                        JSONArray dataArray = JSON.parseObject(response).getJSONArray("data");
+                        JSONObject data = dataArray.getJSONObject(0);
+                        final String imageUrl = data.getString("imageUrl");
+                        Toast.makeText(getContext(),imageUrl,Toast.LENGTH_LONG).show();
+                    }
+                })
+                .build()
+                .get();
     }
 
     @Override
