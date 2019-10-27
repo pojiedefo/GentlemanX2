@@ -61,7 +61,7 @@ public class IndexDelegate extends BottomItemDelegate {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration
-                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background0), 5));
+                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         final IntroduceBottomDelegate introduceBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(introduceBottomDelegate));
     }
@@ -71,7 +71,7 @@ public class IndexDelegate extends BottomItemDelegate {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
-        mRefreshHandler.firstPage("http://192.168.1.105:8080/Gx/index.json");
+        mRefreshHandler.firstPage("http://192.168.1.100:8080/Gx/index.json");
     }
 
     @Override

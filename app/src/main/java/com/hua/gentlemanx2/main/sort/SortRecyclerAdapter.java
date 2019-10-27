@@ -20,9 +20,7 @@ import me.yokeyword.fragmentation.SupportHelper;
 public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
 
     private final SortDelegate DELEGATE;
-
-    private int mPrePosition = -1;
-
+    private int mPrePosition = 0;
 
     protected SortRecyclerAdapter(List<MultipleItemEntity> data, SortDelegate delegate) {
         super(data);

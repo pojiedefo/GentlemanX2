@@ -3,15 +3,27 @@ package com.hua.gentlemanx2.main.sort;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.GxDelegate;
+import com.hua.gentlemanx2.net.RestClient;
+import com.hua.gentlemanx2.net.callback.ISuccess;
+
+import java.util.List;
+
+import butterknife.BindView;
 
 public class ContentDelegate extends GxDelegate {
 
     private static final String ARG_CONTENT_ID = "CONTENT_ID";
     private int mContentId = -1;
+    private List<SectionBean> mData = null;
+
+    @BindView(R.id.rv_list_content)
+    RecyclerView mRecyclerView;
 
     @Override
     public Object setLayout() {
@@ -27,18 +39,37 @@ public class ContentDelegate extends GxDelegate {
         }
     }
 
-    public static ContentDelegate newInstance(int contentId){
+    public static ContentDelegate newInstance(int contentId) {
         final Bundle args = new Bundle();
-        args.putInt(ARG_CONTENT_ID,contentId);
+        args.putInt(ARG_CONTENT_ID, contentId);
         final ContentDelegate delegate = new ContentDelegate();
         delegate.setArguments(args);
         return delegate;
     }
 
+    private void initData() {
+        RestClient.builder()
+                .url("http://192.168.1.100:8080/Gx/sort_right.json?contentId=" + mContentId)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        mData = new SectionDataConverter().convert(response);
+                        final SectionAdapter sectionAdapter =
+                                new SectionAdapter(R.layout.item_section_content,
+                                        R.layout.item_section_header, mData);
+                        mRecyclerView.setAdapter(sectionAdapter);
+                    }
+                })
+                .build()
+                .get();
+    }
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-
+        final StaggeredGridLayoutManager manager =
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(manager);
+        initData();
     }
 
     @Override
