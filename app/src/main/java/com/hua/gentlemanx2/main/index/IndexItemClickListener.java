@@ -15,7 +15,7 @@ public class IndexItemClickListener extends SimpleClickListener {
         this.DELEGATE = delegate;
     }
 
-    public static SimpleClickListener create(GxDelegate delegate){
+    public static SimpleClickListener create(GxDelegate delegate) {
         return new IndexItemClickListener(delegate);
     }
 

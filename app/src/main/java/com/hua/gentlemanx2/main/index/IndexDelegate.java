@@ -10,17 +10,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.bottom.BottomItemDelegate;
 import com.hua.gentlemanx2.main.IntroduceBottomDelegate;
-import com.hua.gentlemanx2.main.index.entity.IndexDataConverter;
-import com.hua.gentlemanx2.net.RestClient;
-import com.hua.gentlemanx2.net.callback.ISuccess;
 import com.hua.gentlemanx2.ui.decoration.BaseDecoration;
 import com.hua.gentlemanx2.ui.refresh.RefreshHandler;
 import com.joanzapata.iconify.widget.IconTextView;

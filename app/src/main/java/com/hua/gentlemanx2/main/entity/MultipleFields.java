@@ -1,6 +1,6 @@
-package com.hua.gentlemanx2.main.index.entity;
+package com.hua.gentlemanx2.main.entity;
 
-public enum IndexFields {
+public enum MultipleFields {
     ITEM_TYPE,
     TEXT,
     IMAGE_URL,

@@ -8,8 +8,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hua.gentlemanx2.app.Gx;
 import com.hua.gentlemanx2.app.GxLogger;
-import com.hua.gentlemanx2.main.index.adapter.IndexRecyclerAdapter;
-import com.hua.gentlemanx2.main.index.entity.DataConverter;
+import com.hua.gentlemanx2.main.adapter.MultipleRecyclerAdapter;
+import com.hua.gentlemanx2.main.entity.DataConverter;
 import com.hua.gentlemanx2.net.RestClient;
 import com.hua.gentlemanx2.net.callback.ISuccess;
 
@@ -20,7 +20,7 @@ public class RefreshHandler implements
     private final SwipeRefreshLayout REFRESH_LAYOUT;
     private final PagingBean BEAN;
     private final RecyclerView RECYCLERVIEW;
-    private IndexRecyclerAdapter mAdapter = null;
+    private MultipleRecyclerAdapter mAdapter = null;
     private final DataConverter CONVERTER;
 
     private RefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
@@ -62,7 +62,7 @@ public class RefreshHandler implements
                         BEAN.setTotal(object.getInteger("total"))
                                 .setPageSize(object.getInteger("page_size"));
                         //设置Adapter
-                        mAdapter = IndexRecyclerAdapter.create(CONVERTER.setJsonData(response));
+                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
                         mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
                         RECYCLERVIEW.setAdapter(mAdapter);
                         BEAN.addIndex();
