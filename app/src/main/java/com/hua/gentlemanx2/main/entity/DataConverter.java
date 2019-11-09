@@ -17,11 +17,13 @@ public abstract class DataConverter {
     //抽象方法 convert
     public abstract ArrayList<MultipleItemEntity> convert();
 
+    //把穿过来的json字符串 赋值给 mJsonData
     public DataConverter setJsonData(String json) {
         this.mJsonData = json;
         return this;
     }
 
+    //拿到json字符串
     protected String getJsonData() {
         if (mJsonData == null || mJsonData.isEmpty()) {
             throw new NullPointerException("data is null");
@@ -29,6 +31,7 @@ public abstract class DataConverter {
         return mJsonData;
     }
 
+    //清除数据
     public void clearData() {
         ENTITIES.clear();
     }

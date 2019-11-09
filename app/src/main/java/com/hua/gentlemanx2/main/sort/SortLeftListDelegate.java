@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.hua.gentlemanx2.R;
+import com.hua.gentlemanx2.app.Constants;
 import com.hua.gentlemanx2.delegate.GxDelegate;
 import com.hua.gentlemanx2.main.entity.MultipleItemEntity;
 import com.hua.gentlemanx2.net.RestClient;
@@ -16,7 +17,6 @@ import com.hua.gentlemanx2.net.callback.ISuccess;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.Unbinder;
 
 public class SortLeftListDelegate extends GxDelegate {
     @BindView(R.id.rv_vertical_menu_list)
@@ -48,7 +48,7 @@ public class SortLeftListDelegate extends GxDelegate {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         RestClient.builder()
-                .url("http://192.168.1.100:8080/Gx/sort_left.json")
+                .url(Constants.url + "Gx/sort_left.json")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override

@@ -1,15 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<android.support.v7.widget.AppCompatTextView
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="首页"
-    tools:ignore="HardcodedText" />
+    android:background="@color/app_background"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/holo_blue_bright">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|bottom"
+            android:text="我的"
+            android:textSize="22sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/white">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/aiv_user_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/atv_user_login_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_toRightOf="@+id/aiv_user_image"
+            android:text="请登录以便于享受更多的服务"
+            android:textSize="13sp" />
 
 
-</LinearLayout>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/atv_user_login_prompt"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/aiv_user_image"
+            android:text="哈哈ZLJ是傻逼"
+            android:textSize="13sp" />
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/atv_user_login_prompt"
+            android:gravity="center|right"
+            android:paddingRight="20dp"
+            android:text="{fa-hand-o-right}"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>

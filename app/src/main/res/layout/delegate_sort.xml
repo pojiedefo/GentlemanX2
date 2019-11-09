@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:background="@android:color/holo_blue_bright"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="@android:color/holo_blue_bright">
 
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="22sp"
-            android:text="分类"
             android:gravity="center"
             android:paddingTop="12dp"
+            android:text="分类"
+            android:textSize="22sp"
             tools:ignore="HardcodedText" />
 
     </android.support.v7.widget.Toolbar>
