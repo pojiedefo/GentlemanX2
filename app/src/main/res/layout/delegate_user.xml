@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background"
+    android:background="@color/layout_user_background"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -49,6 +49,7 @@
             android:layout_below="@+id/atv_user_login_prompt"
             android:layout_marginTop="8dp"
             android:layout_toRightOf="@+id/aiv_user_image"
+            android:visibility="invisible"
             android:text="哈哈ZLJ是傻逼"
             android:textSize="13sp" />
 
@@ -64,8 +65,9 @@
 
     <!--我的收藏+图片展示 + 我的信息+我看过的 的布局-->
     <android.support.v7.widget.LinearLayoutCompat
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
@@ -88,14 +90,13 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:text="{fa-heart}"
-                    android:textColor="@android:color/holo_orange_light"
+                    android:textColor="@android:color/holo_green_light"
                     android:textSize="20sp" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我的收藏"
-                    android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <com.joanzapata.iconify.widget.IconTextView
@@ -121,11 +122,54 @@
             android:layout_height="0.1dp"
             android:background="@color/line_background" />
 
+        <!--我的朋友-->
         <android.support.v7.widget.LinearLayoutCompat
-            android:id="@+id/llc_user_my_message"
-            android:background="@android:color/white"
+            android:id="@+id/llc_user_my_friends"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="12dp"
+                android:text="{fa-male}"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="22sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="2dp"
+                android:text="我的朋友"
+                android:textSize="16sp" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="20dp"
+                android:text="{fa-angle-right}"
+                android:textColor="@color/angle"
+                android:textSize="23sp" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_background" />
+
+        <!--我的消息-->
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/llc_user_my_message"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:color/white"
             android:orientation="horizontal">
 
             <com.joanzapata.iconify.widget.IconTextView
@@ -161,6 +205,7 @@
             android:layout_height="0.1dp"
             android:background="@color/line_background" />
 
+        <!--我看过的-->
         <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/llc_user_my_history"
             android:layout_width="match_parent"
@@ -181,9 +226,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="2dp"
+                android:layout_marginBottom="2dp"
                 android:text="我看过的"
+                android:textSize="16sp" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="20dp"
+                android:text="{fa-angle-right}"
+                android:textColor="@color/angle"
+                android:textSize="23sp" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_background" />
+
+        <!--个人设置-->
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/llc_user_my_setting"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="12dp"
+                android:text="{fa-cog}"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="个人设置"
                 android:textSize="16sp" />
 
             <com.joanzapata.iconify.widget.IconTextView

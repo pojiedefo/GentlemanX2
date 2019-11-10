@@ -12,6 +12,9 @@
     <color name="app_main">@android:color/holo_orange_dark</color>
     <!--我的布局的颜色-->
     <color name="angle">#C9C9C9</color>
+    <!--线的背景颜色-->
     <color name="line_background">#F3E5E5</color>
+    <!--user布局的背景颜色-->
+    <color name="layout_user_background">#F7F2F2</color>
 </resources>
 
