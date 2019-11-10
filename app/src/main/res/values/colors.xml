@@ -11,4 +11,7 @@
     <color name="item_background">#F1F1F1</color>
     <color name="app_main">@android:color/holo_orange_dark</color>
     <!--我的布局的颜色-->
+    <color name="angle">#C9C9C9</color>
+    <color name="line_background">#F3E5E5</color>
 </resources>
+
