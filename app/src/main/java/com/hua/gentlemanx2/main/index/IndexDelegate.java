@@ -82,6 +82,8 @@ public class IndexDelegate extends BottomItemDelegate {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 }

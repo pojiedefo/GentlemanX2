@@ -44,6 +44,7 @@
             android:textSize="13sp" />
 
         <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/atv_user_login_signatrue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/atv_user_login_prompt"
@@ -54,6 +55,7 @@
             android:textSize="13sp" />
 
         <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/itv_user_login_prompt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/atv_user_login_prompt"
