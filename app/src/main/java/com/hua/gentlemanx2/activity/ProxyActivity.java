@@ -1,9 +1,9 @@
 package com.hua.gentlemanx2.activity;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.ContentFrameLayout;
 import android.view.Window;
 
@@ -30,8 +30,7 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
     }
 
     private void initContainer(@Nullable Bundle savedInstanceState) {
-        @SuppressLint("RestrictedApi")
-        final ContentFrameLayout container = new ContentFrameLayout(this);
+        @SuppressLint("RestrictedApi") final ContentFrameLayout container = new ContentFrameLayout(this);
         container.setId(R.id.delegate_container);
         setContentView(container);
         if (savedInstanceState == null) {

@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.GxDelegate;
@@ -17,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.ISupportFragment;
 
 public class SignUpDelegate extends GxDelegate {
 
@@ -70,7 +72,7 @@ public class SignUpDelegate extends GxDelegate {
             case R.id.btn_sign_up:
                 break;
             case R.id.tv_link_sign_in:
-                getSupportDelegate().start(new SignInDelegate());
+                getSupportDelegate().start(new SignInDelegate(), ISupportFragment.SINGLETASK);
                 break;
         }
     }

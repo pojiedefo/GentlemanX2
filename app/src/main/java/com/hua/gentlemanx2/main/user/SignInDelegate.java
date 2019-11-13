@@ -18,6 +18,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.ISupportFragment;
+
+import static me.yokeyword.fragmentation.SupportHelper.findFragment;
 
 public class SignInDelegate extends GxDelegate {
     @BindView(R.id.edit_sign_in_email)
@@ -67,12 +70,11 @@ public class SignInDelegate extends GxDelegate {
             case R.id.btn_sign_in:
                 break;
             case R.id.tv_link_sign_up:
-                //回到注册页面
-                getSupportDelegate().start(new SignUpDelegate());
+                //回到注册页面,以任务栈的方式开启SignUpDelegate
+                getSupportDelegate().start(new SignUpDelegate(), ISupportFragment.SINGLETASK);
                 break;
             case R.id.icon_sign_in_wechat:
                 break;
         }
     }
-
 }
