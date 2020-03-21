@@ -6,12 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hua.gentlemanx2.R;
 import com.hua.gentlemanx2.delegate.GxDelegate;
+import com.hua.gentlemanx2.delegate.bottom.BottomItemDelegate;
+import com.hua.gentlemanx2.net.RestClient;
+import com.hua.gentlemanx2.net.callback.ISuccess;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +23,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.ISupportFragment;
 
-public class SignUpDelegate extends GxDelegate {
+public class SignUpDelegate extends BottomItemDelegate {
 
     @BindView(R.id.edit_sign_up_name)
     TextInputEditText editSignUpName;
@@ -69,11 +73,72 @@ public class SignUpDelegate extends GxDelegate {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_sign_up:
+                //TODO 点击注册按钮的逻辑
+                if (localChecker()){
+                    //本地校验完成 把数据提交给服务器
+                    RestClient.builder()
+                            .url("")
+                            .params("","")
+                            .success(new ISuccess() {
+                                @Override
+                                public void onSuccess(String response) {
+
+                                }
+                            })
+                            .build()
+                            .post();
+                }
                 break;
             case R.id.tv_link_sign_in:
                 getSupportDelegate().start(new SignInDelegate(), ISupportFragment.SINGLETASK);
                 break;
         }
     }
+
+    private boolean localChecker(){
+        final String name = editSignUpName.getText().toString();
+        final String email = editSignUpEmail.getText().toString();
+        final String phone = editSignUpPhone.getText().toString();
+        final String password = editSignUpPassword.getText().toString();
+        final String rePassword = editSignUpRePassword.getText().toString();
+        boolean isPass = true;
+
+        if (name.isEmpty()){
+            editSignUpName.setError("请输入姓名");
+            isPass=false;
+        }else {
+            editSignUpName.setError(null);
+        }
+
+        if (email.isEmpty()|| Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            editSignUpEmail.setError("错误的邮箱格式");
+            isPass=false;
+        }else {
+            editSignUpEmail.setError(null);
+        }
+
+        if (phone.length() != 11){
+            editSignUpPhone.setError("手机号码错误");
+            isPass=false;
+        }else {
+            editSignUpPhone.setError(null);
+        }
+
+        if (password.isEmpty()||password.length()<6){
+            editSignUpPassword.setError("请填写至少6位数的密码");
+            isPass=false;
+        }else {
+            editSignUpPassword.setError(null);
+        }
+
+        if (rePassword.isEmpty()||rePassword.length()<6||!rePassword.equals(password)){
+            editSignUpRePassword.setError("密码验证错误");
+            isPass=false;
+        }else {
+            editSignUpRePassword.setError(null);
+        }
+        return isPass;
+    }
+
 
 }
