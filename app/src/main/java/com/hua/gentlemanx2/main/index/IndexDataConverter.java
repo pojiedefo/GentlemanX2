@@ -17,12 +17,12 @@ public final class IndexDataConverter extends DataConverter {
         final int size = dataArray.size();
         for (int i = 0; i < size; i++) {
             final JSONObject data = dataArray.getJSONObject(i);
-            final String imageUrl = data.getString("imageUrl");
-            final String text = data.getString("text");
-            final int spanSize = data.getInteger("spanSize");
-            final int id = data.getInteger("goodsId");
-            final JSONArray banners = data.getJSONArray("banners");
+            final String imageUrl = data.getString("big");
+            final String text = data.getString("name");
+            final int spanSize = 4;
+            final int id = data.getInteger("goods_id");
 
+            final JSONArray banners = data.getJSONArray("banners");
             final ArrayList<String> bannerImages = new ArrayList<>();
             int type = 0;
             if (imageUrl == null && text != null) {
@@ -40,7 +40,6 @@ public final class IndexDataConverter extends DataConverter {
                     bannerImages.add(banner);
                 }
             }
-
             final MultipleItemEntity entity = MultipleItemEntity.builder()
                     .setField(MultipleFields.ITEM_TYPE, type)
                     .setField(MultipleFields.SPAN_SIZE, spanSize)

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <!--标题栏-->
+    <FrameLayout
+        android:id="@+id/common_title"
+        android:layout_width="fill_parent"
+        android:layout_height="49.0dip"
+        android:fadingEdge="none">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="12dp"
+            android:text="{fa-chevron-left}"
+            android:textColor="@color/btn_blue_standard_color"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10.0dip"
+            android:singleLine="true"
+            android:text="搜索结果"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </FrameLayout>
+    <!--分割线-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/product_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:minHeight="?android:listPreferredItemHeight"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/favorite_empty"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/favo_empty_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center_horizontal"
+            android:textAppearance="@android:style/TextAppearance"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+</LinearLayout>

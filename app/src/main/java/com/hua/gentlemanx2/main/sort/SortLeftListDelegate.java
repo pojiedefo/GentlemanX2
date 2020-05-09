@@ -48,7 +48,7 @@ public class SortLeftListDelegate extends GxDelegate {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         RestClient.builder()
-                .url(Constants.url + "Gx/sort_left.json")
+                .url(Constants.URL + "cat/show")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override

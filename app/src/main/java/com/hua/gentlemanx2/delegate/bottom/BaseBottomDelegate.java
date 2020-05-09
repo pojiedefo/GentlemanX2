@@ -86,7 +86,6 @@ public abstract class BaseBottomDelegate extends GxDelegate implements View.OnCl
                 itemTitle.setTextColor(mClickedColor);
             }
         }
-
         final ISupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new ISupportFragment[size]);
         getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
     }

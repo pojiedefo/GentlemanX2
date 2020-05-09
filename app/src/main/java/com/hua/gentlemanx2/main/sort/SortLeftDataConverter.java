@@ -17,13 +17,12 @@ public class SortLeftDataConverter extends DataConverter {
         final ArrayList<MultipleItemEntity> datalist = new ArrayList<>();
         final JSONArray dataArray = JSON
                 .parseObject(getJsonData())
-                .getJSONObject("data")
-                .getJSONArray("list");
+                .getJSONArray("data");
 
         final int size = dataArray.size();
         for (int i = 0; i < size; i++) {
             final JSONObject data = dataArray.getJSONObject(i);
-            final Integer id = data.getInteger("id");
+            final Integer id = data.getInteger("cat_id");
             final String name = data.getString("name");
 
             final MultipleItemEntity entity = MultipleItemEntity.builder()

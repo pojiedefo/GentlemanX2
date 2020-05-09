@@ -30,7 +30,6 @@ public class RequestCallbacks implements Callback<String> {
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-
         if (response.isSuccessful()){
             if (call.isExecuted()){
                 if (SUCCESS != null){

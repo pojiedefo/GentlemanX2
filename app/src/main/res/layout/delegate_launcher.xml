@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@drawable/launcher_00"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_timer"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:textSize="18sp"
+        android:text="跳过"
+        android:background="@drawable/tv_timer_conners"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_width="70dp"
+        android:layout_height="70dp"/>
+
+</RelativeLayout>

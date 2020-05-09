@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingBottom="14.0dip">
+
+    <ImageView
+        android:id="@+id/goodslist_img"
+        android:layout_width="80.0dip"
+        android:layout_height="80.0dip"
+        android:layout_marginLeft="16.0dip" />
+
+    <TextView
+        android:id="@+id/goodslist_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/goodslist_img"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_toRightOf="@id/goodslist_img"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="name"
+        android:textSize="14.0sp" />
+
+    <TextView
+        android:id="@+id/goodslist_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goodslist_name"
+        android:layout_alignLeft="@id/goodslist_name"
+        android:layout_marginTop="6.0dip"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="description"
+        android:textSize="14.0sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#C9C9C9" />
+
+</RelativeLayout>

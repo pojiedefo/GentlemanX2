@@ -30,7 +30,8 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
     }
 
     private void initContainer(@Nullable Bundle savedInstanceState) {
-        @SuppressLint("RestrictedApi") final ContentFrameLayout container = new ContentFrameLayout(this);
+        @SuppressLint("RestrictedApi")
+        final ContentFrameLayout container = new ContentFrameLayout(this);
         container.setId(R.id.delegate_container);
         setContentView(container);
         if (savedInstanceState == null) {

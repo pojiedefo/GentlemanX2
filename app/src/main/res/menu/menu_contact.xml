@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group_contact">
+        <item
+            android:id="@+id/addfriends"
+            android:orderInCategory="10"
+            android:title="添加好友" />
+        <item
+            android:id="@+id/addchat"
+            android:orderInCategory="11"
+            android:title="添加群聊" />
+    </group>
+</menu>

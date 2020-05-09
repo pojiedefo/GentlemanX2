@@ -25,7 +25,6 @@ public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseVie
     protected void convertHead(BaseViewHolder helper, SectionBean item) {
         helper.setText(R.id.header, item.header);
         helper.setVisible(R.id.more, item.isMore());
-        helper.addOnClickListener(R.id.more);
     }
 
     @Override
@@ -41,4 +40,5 @@ public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseVie
                 .load(thumb)
                 .into(goodsImageView);
     }
+
 }

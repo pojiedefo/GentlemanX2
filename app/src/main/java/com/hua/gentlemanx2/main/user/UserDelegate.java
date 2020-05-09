@@ -1,5 +1,6 @@
 package com.hua.gentlemanx2.main.user;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hua.gentlemanx2.R;
+import com.hua.gentlemanx2.delegate.GxDelegate;
 import com.hua.gentlemanx2.delegate.bottom.BottomItemDelegate;
-import com.joanzapata.iconify.widget.IconTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,29 +28,28 @@ public class UserDelegate extends BottomItemDelegate {
     @BindView(R.id.atv_user_login_prompt)
     AppCompatTextView atvUserLoginPrompt;
     @BindView(R.id.atv_user_login_signatrue)
-    AppCompatTextView atvUserLoginSignatrue;
-    @BindView(R.id.itv_user_login_prompt)
-    IconTextView itvUserLoginPrompt;
+    AppCompatTextView mUserSignatrue;
     @BindView(R.id.rv_user_mycollection)
-    RecyclerView rvUserMycollection;
-    @BindView(R.id.llc_user_my_friends)
-    LinearLayoutCompat llcUserMyFriends;
-    @BindView(R.id.llc_user_my_message)
-    LinearLayoutCompat llcUserMyMessage;
-    @BindView(R.id.llc_user_my_history)
-    LinearLayoutCompat llcUserMyHistory;
-    @BindView(R.id.llc_user_my_setting)
-    LinearLayoutCompat llcUserMySetting;
+    RecyclerView mRecyclerView;
+
     Unbinder unbinder;
+    @BindView(R.id.llc_my_collections)
+    LinearLayoutCompat llcMyCollections;
 
     @Override
     public Object setLayout() {
         return R.layout.delegate_user;
     }
 
+    public static GxDelegate delegate;
+
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-
+        SharedPreferences user = getSupportDelegate().getActivity().getSharedPreferences("user", 0);
+        String name = user.getString("name", "");
+        atvUserLoginPrompt.setText(name);
+        atvUserLoginPrompt.setTextSize(20);
+        delegate = getParentDelegate();
     }
 
     @Override
@@ -72,32 +72,30 @@ public class UserDelegate extends BottomItemDelegate {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 
-    @OnClick({R.id.aiv_user_image, R.id.atv_user_login_prompt, R.id.atv_user_login_signatrue, R.id.itv_user_login_prompt, R.id.rv_user_mycollection, R.id.llc_user_my_friends, R.id.llc_user_my_message, R.id.llc_user_my_history, R.id.llc_user_my_setting})
+    @OnClick({R.id.atv_user_login_prompt, R.id.atv_user_login_signatrue,
+            R.id.rv_user_mycollection,
+            R.id.llc_my_collections})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.aiv_user_image:
-                break;
             case R.id.atv_user_login_prompt:
-                signUp();
                 break;
             case R.id.atv_user_login_signatrue:
+                delegate.getSupportDelegate().start(new SignatureDelegate());
                 break;
-            case R.id.itv_user_login_prompt:
-                signUp();
+            case R.id.llc_my_collections:
+                delegate.getSupportDelegate().start(new MyCollectionDelegate());
                 break;
             case R.id.rv_user_mycollection:
                 break;
-            case R.id.llc_user_my_friends:
+            default:
                 break;
-            case R.id.llc_user_my_message:
-                break;
-            case R.id.llc_user_my_history:
-                break;
-            case R.id.llc_user_my_setting:
-                break;
+
         }
     }
+
 }

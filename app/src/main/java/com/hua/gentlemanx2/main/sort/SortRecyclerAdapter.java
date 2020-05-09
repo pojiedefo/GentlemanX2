@@ -51,7 +51,6 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
                         entity.setField(MultipleFields.TAG, true);
                         notifyItemChanged(currentPosition);
                         mPrePosition = currentPosition;
-
                         final int contentId = getData().get(currentPosition).getField(MultipleFields.ID);
                         showContent(contentId);
                     }

@@ -1,6 +1,8 @@
 package com.hua.gentlemanx2.main.sort;
 
-public class SectionContentItemEntity {
+import java.io.Serializable;
+
+public class SectionContentItemEntity implements Serializable {
 
     private int mGoodsId = 0;
     private String mGoodsName = null;
